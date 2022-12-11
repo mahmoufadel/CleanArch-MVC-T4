@@ -1,0 +1,48 @@
+
+@model IEnumerable<Domain.Entities.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.AuthorId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Books)
+            </th>
+            <td>
+                <a asp-action="Edit" asp-route-AuthorId="@item.AuthorId">Edit</a> |
+                <a asp-action="Details" asp-route-AuthorId="@item.AuthorId">Details</a> |
+                <a asp-action="Delete" asp-route-AuthorId="@item.AuthorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

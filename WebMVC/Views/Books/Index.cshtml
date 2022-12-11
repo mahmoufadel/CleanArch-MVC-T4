@@ -1,0 +1,96 @@
+
+@model IEnumerable<Domain.Entities.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Isbn13)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumPages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublisherId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderLines)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authors)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.BookId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Title)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Isbn13)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.LanguageId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.NumPages)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.PublicationDate)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.PublisherId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Language)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.OrderLines)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Authors)
+            </th>
+            <td>
+                <a asp-action="Edit" asp-route-BookId="@item.BookId">Edit</a> |
+                <a asp-action="Details" asp-route-BookId="@item.BookId">Details</a> |
+                <a asp-action="Delete" asp-route-BookId="@item.BookId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+@model Domain.Entities.ShippingMethod
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ShippingMethod</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MethodId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MethodId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MethodName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MethodName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CustOrders)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustOrders)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit"  asp-route-MethodId="@Model?.MethodId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

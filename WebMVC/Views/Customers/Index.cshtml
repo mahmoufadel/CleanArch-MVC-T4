@@ -1,0 +1,66 @@
+
+@model IEnumerable<Domain.Entities.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustOrders)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddresses)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Email)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.CustOrders)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.CustomerAddresses)
+            </th>
+            <td>
+                <a asp-action="Edit" asp-route-CustomerId="@item.CustomerId">Edit</a> |
+                <a asp-action="Details" asp-route-CustomerId="@item.CustomerId">Details</a> |
+                <a asp-action="Delete" asp-route-CustomerId="@item.CustomerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+
+@model IEnumerable<Domain.Entities.Publisher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PublisherId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublisherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.PublisherId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.PublisherName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Books)
+            </th>
+            <td>
+                <a asp-action="Edit" asp-route-PublisherId="@item.PublisherId">Edit</a> |
+                <a asp-action="Details" asp-route-PublisherId="@item.PublisherId">Details</a> |
+                <a asp-action="Delete" asp-route-PublisherId="@item.PublisherId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

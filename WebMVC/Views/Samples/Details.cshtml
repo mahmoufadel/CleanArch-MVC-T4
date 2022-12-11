@@ -1,0 +1,48 @@
+@model Domain.Entities.Sample
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Sample</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit"  asp-route-Id1="@Model?.Id1" asp-route-Id2="@Model?.Id2" asp-route-Id3="@Model?.Id3">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

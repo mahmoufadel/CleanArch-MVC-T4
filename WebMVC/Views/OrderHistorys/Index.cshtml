@@ -1,0 +1,66 @@
+
+@model IEnumerable<Domain.Entities.OrderHistory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.HistoryId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.StatusId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.StatusDate)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Order)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Status)
+            </th>
+            <td>
+                <a asp-action="Edit" asp-route-HistoryId="@item.HistoryId">Edit</a> |
+                <a asp-action="Details" asp-route-HistoryId="@item.HistoryId">Details</a> |
+                <a asp-action="Delete" asp-route-HistoryId="@item.HistoryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

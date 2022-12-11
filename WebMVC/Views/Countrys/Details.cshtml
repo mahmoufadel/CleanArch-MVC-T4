@@ -1,0 +1,36 @@
+@model Domain.Entities.Country
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Country</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CountryId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CountryId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CountryName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CountryName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Addresses)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Addresses)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit"  asp-route-CountryId="@Model?.CountryId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,48 @@
+
+@model IEnumerable<Domain.Entities.OrderStatus>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderHistories)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.StatusId)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.StatusValue)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.OrderHistories)
+            </th>
+            <td>
+                <a asp-action="Edit" asp-route-StatusId="@item.StatusId">Edit</a> |
+                <a asp-action="Details" asp-route-StatusId="@item.StatusId">Details</a> |
+                <a asp-action="Delete" asp-route-StatusId="@item.StatusId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
