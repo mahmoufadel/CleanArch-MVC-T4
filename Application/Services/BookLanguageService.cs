@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.BookLanguageRepository.GetById(LanguageId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("BookLanguage", LanguageId.ToString() );
+                throw new EntityKeyNotFoundException("BookLanguage", LanguageId.ToString());
             }
             return (item, "BookLanguage record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.BookLanguageRepository.GetById(entity.LanguageId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("BookLanguage", entity.LanguageId.ToString() );
+                    throw new EntityKeyFoundException("BookLanguage", entity.LanguageId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.BookLanguageRepository.GetById(LanguageId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("BookLanguage", LanguageId.ToString() );
+                throw new EntityKeyNotFoundException("BookLanguage", LanguageId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateBookLanguage(int? LanguageId, BookLanguage entity, CancellationToken cancellationToken = default)
         {
-            if(!(LanguageId == entity.LanguageId))
+            if (!(LanguageId == entity.LanguageId))
             {
-                throw new BadKeyException("BookLanguage", entity.LanguageId.ToString() , LanguageId.ToString() );
+                throw new BadKeyException("BookLanguage", entity.LanguageId.ToString(), LanguageId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.BookLanguageRepository.GetById(LanguageId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("BookLanguage", LanguageId.ToString() );
+                    throw new EntityKeyNotFoundException("BookLanguage", LanguageId.ToString());
                 }
                 else
                 {

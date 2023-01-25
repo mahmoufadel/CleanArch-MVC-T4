@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.ShippingMethodRepository.GetById(MethodId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("ShippingMethod", MethodId.ToString() );
+                throw new EntityKeyNotFoundException("ShippingMethod", MethodId.ToString());
             }
             return (item, "ShippingMethod record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.ShippingMethodRepository.GetById(entity.MethodId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("ShippingMethod", entity.MethodId.ToString() );
+                    throw new EntityKeyFoundException("ShippingMethod", entity.MethodId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.ShippingMethodRepository.GetById(MethodId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("ShippingMethod", MethodId.ToString() );
+                throw new EntityKeyNotFoundException("ShippingMethod", MethodId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateShippingMethod(int? MethodId, ShippingMethod entity, CancellationToken cancellationToken = default)
         {
-            if(!(MethodId == entity.MethodId))
+            if (!(MethodId == entity.MethodId))
             {
-                throw new BadKeyException("ShippingMethod", entity.MethodId.ToString() , MethodId.ToString() );
+                throw new BadKeyException("ShippingMethod", entity.MethodId.ToString(), MethodId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.ShippingMethodRepository.GetById(MethodId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("ShippingMethod", MethodId.ToString() );
+                    throw new EntityKeyNotFoundException("ShippingMethod", MethodId.ToString());
                 }
                 else
                 {

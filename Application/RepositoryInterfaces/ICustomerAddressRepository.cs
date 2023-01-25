@@ -7,6 +7,6 @@ namespace Application.RepositoryInterfaces
 {
     public interface ICustomerAddressRepository : IGenericRepository<CustomerAddress>
     {
-        ValueTask<CustomerAddress?> GetById(int? CustomerId,int? AddressId);
+        ValueTask<CustomerAddress?> GetById(int? CustomerId, int? AddressId);
     }
 }

@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.AddressStatusRepository.GetById(StatusId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("AddressStatus", StatusId.ToString() );
+                throw new EntityKeyNotFoundException("AddressStatus", StatusId.ToString());
             }
             return (item, "AddressStatus record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.AddressStatusRepository.GetById(entity.StatusId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("AddressStatus", entity.StatusId.ToString() );
+                    throw new EntityKeyFoundException("AddressStatus", entity.StatusId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.AddressStatusRepository.GetById(StatusId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("AddressStatus", StatusId.ToString() );
+                throw new EntityKeyNotFoundException("AddressStatus", StatusId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateAddressStatus(int? StatusId, AddressStatus entity, CancellationToken cancellationToken = default)
         {
-            if(!(StatusId == entity.StatusId))
+            if (!(StatusId == entity.StatusId))
             {
-                throw new BadKeyException("AddressStatus", entity.StatusId.ToString() , StatusId.ToString() );
+                throw new BadKeyException("AddressStatus", entity.StatusId.ToString(), StatusId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.AddressStatusRepository.GetById(StatusId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("AddressStatus", StatusId.ToString() );
+                    throw new EntityKeyNotFoundException("AddressStatus", StatusId.ToString());
                 }
                 else
                 {

@@ -30,12 +30,12 @@ namespace Application.Services
             return (items, "CustomerAddress records retrieved");
         }
 
-        public async Task<(CustomerAddress? entity, string Message)> GetCustomerAddressById(int? CustomerId,int? AddressId, CancellationToken cancellationToken = default)
+        public async Task<(CustomerAddress? entity, string Message)> GetCustomerAddressById(int? CustomerId, int? AddressId, CancellationToken cancellationToken = default)
         {
-            var item = await _repositoryManager.CustomerAddressRepository.GetById(CustomerId,AddressId);
+            var item = await _repositoryManager.CustomerAddressRepository.GetById(CustomerId, AddressId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("CustomerAddress", CustomerId.ToString() + '/'+AddressId.ToString() );
+                throw new EntityKeyNotFoundException("CustomerAddress", CustomerId.ToString() + '/' + AddressId.ToString());
             }
             return (item, "CustomerAddress record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.CustomerAddressRepository.GetById(entity.CustomerId, entity.AddressId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("CustomerAddress", entity.CustomerId.ToString() +'/'+entity.AddressId.ToString() );
+                    throw new EntityKeyFoundException("CustomerAddress", entity.CustomerId.ToString() + '/' + entity.AddressId.ToString());
                 }
                 else
                 {
@@ -59,12 +59,12 @@ namespace Application.Services
             throw new Exception("Add Error");
         }
 
-        public async Task<string> RemoveCustomerAddress(int? CustomerId,int? AddressId, CancellationToken cancellationToken = default)
+        public async Task<string> RemoveCustomerAddress(int? CustomerId, int? AddressId, CancellationToken cancellationToken = default)
         {
-            var item = await _repositoryManager.CustomerAddressRepository.GetById(CustomerId,AddressId);
+            var item = await _repositoryManager.CustomerAddressRepository.GetById(CustomerId, AddressId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("CustomerAddress", CustomerId.ToString() + '/'+AddressId.ToString() );
+                throw new EntityKeyNotFoundException("CustomerAddress", CustomerId.ToString() + '/' + AddressId.ToString());
             }
             else
             {
@@ -74,25 +74,25 @@ namespace Application.Services
             }
         }
 
-        public async Task<string> UpdateCustomerAddress(int? CustomerId,int? AddressId, CustomerAddress entity, CancellationToken cancellationToken = default)
+        public async Task<string> UpdateCustomerAddress(int? CustomerId, int? AddressId, CustomerAddress entity, CancellationToken cancellationToken = default)
         {
-            if(!(CustomerId == entity.CustomerId && AddressId == entity.AddressId))
+            if (!(CustomerId == entity.CustomerId && AddressId == entity.AddressId))
             {
-                throw new BadKeyException("CustomerAddress", entity.CustomerId.ToString() +'/'+entity.AddressId.ToString() , CustomerId.ToString() + '/'+AddressId.ToString() );
+                throw new BadKeyException("CustomerAddress", entity.CustomerId.ToString() + '/' + entity.AddressId.ToString(), CustomerId.ToString() + '/' + AddressId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
             {
-                var item = await _repositoryManager.CustomerAddressRepository.GetById(CustomerId,AddressId);
+                var item = await _repositoryManager.CustomerAddressRepository.GetById(CustomerId, AddressId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("CustomerAddress", CustomerId.ToString() + '/'+AddressId.ToString() );
+                    throw new EntityKeyNotFoundException("CustomerAddress", CustomerId.ToString() + '/' + AddressId.ToString());
                 }
                 else
                 {

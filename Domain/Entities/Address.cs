@@ -31,9 +31,9 @@ namespace Domain.Entities
         [Unicode(false)]
         public string? City { get; set; }
         [Column("country_id")]
-        public int? CountryId { get; set; }
+        public int? Id { get; set; }
 
-        [ForeignKey(nameof(CountryId))]
+        [ForeignKey(nameof(Id))]
         [InverseProperty("Addresses")]
         public virtual Country? Country { get; set; }
         [InverseProperty(nameof(CustOrder.DestAddress))]

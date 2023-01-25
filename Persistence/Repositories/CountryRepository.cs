@@ -13,9 +13,9 @@ namespace Persistence.Repositories
         {
             _context = context;
         }
-        public async ValueTask<Country?> GetById(int? CountryId)
+        public async ValueTask<Country?> GetById(int? Id)
         {
-            return await _context.Set<Country>().FindAsync(CountryId);
+            return await _context.Set<Country>().FindAsync(Id);
         }
     }
 }

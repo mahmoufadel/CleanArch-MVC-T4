@@ -20,7 +20,7 @@ namespace WebMVC.Controllers
             _serviceManager = serviceManager;
             this.logger = logger;
         }
-        
+
         // GET: Address
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -45,7 +45,7 @@ namespace WebMVC.Controllers
         // POST Address/Create>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressId,StreetNumber,StreetName,City,CountryId,Country,CustOrders,CustomerAddresses")] Address entity)
+        public async Task<IActionResult> Create([Bind("AddressId,StreetNumber,StreetName,City,Id,Country,CustOrders,CustomerAddresses")] Address entity)
         {
             if (ModelState.IsValid)
             {
@@ -65,11 +65,11 @@ namespace WebMVC.Controllers
         // POST Address/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? AddressId, [Bind("AddressId,StreetNumber,StreetName,City,CountryId,Country,CustOrders,CustomerAddresses")] Address entity)
+        public async Task<IActionResult> Edit(int? AddressId, [Bind("AddressId,StreetNumber,StreetName,City,Id,Country,CustOrders,CustomerAddresses")] Address entity)
         {
             if (ModelState.IsValid)
             {
-                var result = await _serviceManager.AddressService.UpdateAddress(AddressId,entity);
+                var result = await _serviceManager.AddressService.UpdateAddress(AddressId, entity);
                 return RedirectToAction(nameof(Index));
             }
             return View(entity);

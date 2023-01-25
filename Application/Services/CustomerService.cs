@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.CustomerRepository.GetById(CustomerId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Customer", CustomerId.ToString() );
+                throw new EntityKeyNotFoundException("Customer", CustomerId.ToString());
             }
             return (item, "Customer record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.CustomerRepository.GetById(entity.CustomerId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("Customer", entity.CustomerId.ToString() );
+                    throw new EntityKeyFoundException("Customer", entity.CustomerId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.CustomerRepository.GetById(CustomerId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Customer", CustomerId.ToString() );
+                throw new EntityKeyNotFoundException("Customer", CustomerId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateCustomer(int? CustomerId, Customer entity, CancellationToken cancellationToken = default)
         {
-            if(!(CustomerId == entity.CustomerId))
+            if (!(CustomerId == entity.CustomerId))
             {
-                throw new BadKeyException("Customer", entity.CustomerId.ToString() , CustomerId.ToString() );
+                throw new BadKeyException("Customer", entity.CustomerId.ToString(), CustomerId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.CustomerRepository.GetById(CustomerId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("Customer", CustomerId.ToString() );
+                    throw new EntityKeyNotFoundException("Customer", CustomerId.ToString());
                 }
                 else
                 {

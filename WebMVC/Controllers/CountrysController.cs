@@ -20,7 +20,7 @@ namespace WebMVC.Controllers
             _serviceManager = serviceManager;
             this.logger = logger;
         }
-        
+
         // GET: Country
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -30,9 +30,9 @@ namespace WebMVC.Controllers
         }
 
         // GET Country/Details/5
-        public async Task<IActionResult> Details(int? CountryId)
+        public async Task<IActionResult> Details(int? Id)
         {
-            var result = await _serviceManager.CountryService.GetCountryById(CountryId);
+            var result = await _serviceManager.CountryService.GetCountryById(Id);
             return View(result.entity);
         }
 
@@ -45,7 +45,7 @@ namespace WebMVC.Controllers
         // POST Country/Create>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CountryId,CountryName,Addresses")] Country entity)
+        public async Task<IActionResult> Create([Bind("Id,ArabicName,Addresses")] Country entity)
         {
             if (ModelState.IsValid)
             {
@@ -56,38 +56,38 @@ namespace WebMVC.Controllers
         }
 
         // Get Country/Edit/5
-        public async Task<IActionResult> Edit(int? CountryId)
+        public async Task<IActionResult> Edit(int? Id)
         {
-            var result = await _serviceManager.CountryService.GetCountryById(CountryId);
+            var result = await _serviceManager.CountryService.GetCountryById(Id);
             return View(result.entity);
         }
 
         // POST Country/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? CountryId, [Bind("CountryId,CountryName,Addresses")] Country entity)
+        public async Task<IActionResult> Edit(int? Id, [Bind("Id,ArabicName,Addresses")] Country entity)
         {
             if (ModelState.IsValid)
             {
-                var result = await _serviceManager.CountryService.UpdateCountry(CountryId,entity);
+                var result = await _serviceManager.CountryService.UpdateCountry(Id, entity);
                 return RedirectToAction(nameof(Index));
             }
             return View(entity);
         }
 
         // Get Country/Delete/5
-        public async Task<IActionResult> Delete(int? CountryId)
+        public async Task<IActionResult> Delete(int? Id)
         {
-            var result = await _serviceManager.CountryService.GetCountryById(CountryId);
+            var result = await _serviceManager.CountryService.GetCountryById(Id);
             return View(result.entity);
         }
 
         // POST <Country/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? CountryId)
+        public async Task<IActionResult> DeleteConfirmed(int? Id)
         {
-            var result = await _serviceManager.CountryService.RemoveCountry(CountryId);
+            var result = await _serviceManager.CountryService.RemoveCountry(Id);
             return RedirectToAction(nameof(Index));
         }
     }

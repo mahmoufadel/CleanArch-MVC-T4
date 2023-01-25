@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.CustOrderRepository.GetById(OrderId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("CustOrder", OrderId.ToString() );
+                throw new EntityKeyNotFoundException("CustOrder", OrderId.ToString());
             }
             return (item, "CustOrder record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.CustOrderRepository.GetById(entity.OrderId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("CustOrder", entity.OrderId.ToString() );
+                    throw new EntityKeyFoundException("CustOrder", entity.OrderId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.CustOrderRepository.GetById(OrderId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("CustOrder", OrderId.ToString() );
+                throw new EntityKeyNotFoundException("CustOrder", OrderId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateCustOrder(int? OrderId, CustOrder entity, CancellationToken cancellationToken = default)
         {
-            if(!(OrderId == entity.OrderId))
+            if (!(OrderId == entity.OrderId))
             {
-                throw new BadKeyException("CustOrder", entity.OrderId.ToString() , OrderId.ToString() );
+                throw new BadKeyException("CustOrder", entity.OrderId.ToString(), OrderId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.CustOrderRepository.GetById(OrderId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("CustOrder", OrderId.ToString() );
+                    throw new EntityKeyNotFoundException("CustOrder", OrderId.ToString());
                 }
                 else
                 {

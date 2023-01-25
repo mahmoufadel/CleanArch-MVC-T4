@@ -20,7 +20,7 @@ namespace WebMVC.Controllers
             _serviceManager = serviceManager;
             this.logger = logger;
         }
-        
+
         // GET: Sample
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -30,9 +30,9 @@ namespace WebMVC.Controllers
         }
 
         // GET Sample/Details/5
-        public async Task<IActionResult> Details(int? Id1,int? Id2,int? Id3)
+        public async Task<IActionResult> Details(int? Id1, int? Id2, int? Id3)
         {
-            var result = await _serviceManager.SampleService.GetSampleById(Id1,Id2,Id3);
+            var result = await _serviceManager.SampleService.GetSampleById(Id1, Id2, Id3);
             return View(result.entity);
         }
 
@@ -56,38 +56,38 @@ namespace WebMVC.Controllers
         }
 
         // Get Sample/Edit/5
-        public async Task<IActionResult> Edit(int? Id1,int? Id2,int? Id3)
+        public async Task<IActionResult> Edit(int? Id1, int? Id2, int? Id3)
         {
-            var result = await _serviceManager.SampleService.GetSampleById(Id1,Id2,Id3);
+            var result = await _serviceManager.SampleService.GetSampleById(Id1, Id2, Id3);
             return View(result.entity);
         }
 
         // POST Sample/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? Id1,int? Id2,int? Id3, [Bind("Id1,Id2,Id3,Name,Description")] Sample entity)
+        public async Task<IActionResult> Edit(int? Id1, int? Id2, int? Id3, [Bind("Id1,Id2,Id3,Name,Description")] Sample entity)
         {
             if (ModelState.IsValid)
             {
-                var result = await _serviceManager.SampleService.UpdateSample(Id1,Id2,Id3,entity);
+                var result = await _serviceManager.SampleService.UpdateSample(Id1, Id2, Id3, entity);
                 return RedirectToAction(nameof(Index));
             }
             return View(entity);
         }
 
         // Get Sample/Delete/5
-        public async Task<IActionResult> Delete(int? Id1,int? Id2,int? Id3)
+        public async Task<IActionResult> Delete(int? Id1, int? Id2, int? Id3)
         {
-            var result = await _serviceManager.SampleService.GetSampleById(Id1,Id2,Id3);
+            var result = await _serviceManager.SampleService.GetSampleById(Id1, Id2, Id3);
             return View(result.entity);
         }
 
         // POST <Sample/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? Id1,int? Id2,int? Id3)
+        public async Task<IActionResult> DeleteConfirmed(int? Id1, int? Id2, int? Id3)
         {
-            var result = await _serviceManager.SampleService.RemoveSample(Id1,Id2,Id3);
+            var result = await _serviceManager.SampleService.RemoveSample(Id1, Id2, Id3);
             return RedirectToAction(nameof(Index));
         }
     }

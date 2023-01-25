@@ -7,6 +7,6 @@ namespace Application.RepositoryInterfaces
 {
     public interface ICountryRepository : IGenericRepository<Country>
     {
-        ValueTask<Country?> GetById(int? CountryId);
+        ValueTask<Country?> GetById(int? Id);
     }
 }

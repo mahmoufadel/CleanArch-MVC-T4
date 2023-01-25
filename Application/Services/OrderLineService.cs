@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.OrderLineRepository.GetById(LineId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("OrderLine", LineId.ToString() );
+                throw new EntityKeyNotFoundException("OrderLine", LineId.ToString());
             }
             return (item, "OrderLine record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.OrderLineRepository.GetById(entity.LineId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("OrderLine", entity.LineId.ToString() );
+                    throw new EntityKeyFoundException("OrderLine", entity.LineId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.OrderLineRepository.GetById(LineId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("OrderLine", LineId.ToString() );
+                throw new EntityKeyNotFoundException("OrderLine", LineId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateOrderLine(int? LineId, OrderLine entity, CancellationToken cancellationToken = default)
         {
-            if(!(LineId == entity.LineId))
+            if (!(LineId == entity.LineId))
             {
-                throw new BadKeyException("OrderLine", entity.LineId.ToString() , LineId.ToString() );
+                throw new BadKeyException("OrderLine", entity.LineId.ToString(), LineId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.OrderLineRepository.GetById(LineId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("OrderLine", LineId.ToString() );
+                    throw new EntityKeyNotFoundException("OrderLine", LineId.ToString());
                 }
                 else
                 {

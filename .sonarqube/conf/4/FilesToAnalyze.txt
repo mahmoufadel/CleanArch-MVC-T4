@@ -1,0 +1,2 @@
+﻿C:\Users\UX505695\source\repos\t2sln\Startup\Program.cs
+C:\Users\UX505695\source\repos\t2sln\Startup\appsettings.json

@@ -13,9 +13,9 @@ namespace Persistence.Repositories
         {
             _context = context;
         }
-        public async ValueTask<CustomerAddress?> GetById(int? CustomerId,int? AddressId)
+        public async ValueTask<CustomerAddress?> GetById(int? CustomerId, int? AddressId)
         {
-            return await _context.Set<CustomerAddress>().FindAsync(CustomerId,AddressId);
+            return await _context.Set<CustomerAddress>().FindAsync(CustomerId, AddressId);
         }
     }
 }

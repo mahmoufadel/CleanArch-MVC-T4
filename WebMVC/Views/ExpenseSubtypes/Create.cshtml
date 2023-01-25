@@ -1,0 +1,98 @@
+@model Domain.Entities.ExpenseSubtype
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ExpenseSubtype</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Value" class="control-label"></label>
+                <input asp-for="Value" class="form-control" />
+                <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValuetypeLkpId" class="control-label"></label>
+                <input asp-for="ValuetypeLkpId" class="form-control" />
+                <span asp-validation-for="ValuetypeLkpId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaximumValue" class="control-label"></label>
+                <input asp-for="MaximumValue" class="form-control" />
+                <span asp-validation-for="MaximumValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinimumValue" class="control-label"></label>
+                <input asp-for="MinimumValue" class="form-control" />
+                <span asp-validation-for="MinimumValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GlAccount" class="control-label"></label>
+                <input asp-for="GlAccount" class="form-control" />
+                <span asp-validation-for="GlAccount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseId" class="control-label"></label>
+                <input asp-for="ExpenseId" class="form-control" />
+                <span asp-validation-for="ExpenseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditDate" class="control-label"></label>
+                <input asp-for="EditDate" class="form-control" />
+                <span asp-validation-for="EditDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditedBy" class="control-label"></label>
+                <input asp-for="EditedBy" class="form-control" />
+                <span asp-validation-for="EditedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Expense" class="control-label"></label>
+                <input asp-for="Expense" class="form-control" />
+                <span asp-validation-for="Expense" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValuetypeLkp" class="control-label"></label>
+                <input asp-for="ValuetypeLkp" class="form-control" />
+                <span asp-validation-for="ValuetypeLkp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

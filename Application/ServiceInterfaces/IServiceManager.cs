@@ -5,7 +5,6 @@ namespace Application.ServiceInterfaces
 {
     public interface IServiceManager
     {
-        ISampleService SampleService { get; }
         IOrderStatusService OrderStatusService { get; }
         IBookLanguageService BookLanguageService { get; }
         IBookService BookService { get; }
@@ -14,11 +13,18 @@ namespace Application.ServiceInterfaces
         ICustomerService CustomerService { get; }
         IAddressService AddressService { get; }
         ICountryService CountryService { get; }
+        ISampleService SampleService { get; }
         IOrderLineService OrderLineService { get; }
         IAuthorService AuthorService { get; }
         ICustOrderService CustOrderService { get; }
         IOrderHistoryService OrderHistoryService { get; }
         ICustomerAddressService CustomerAddressService { get; }
         IPublisherService PublisherService { get; }
+        IExpenseTypeService ExpenseTypeService { get; }
+        IValuetypeService ValuetypeService { get; }
+        IExpenseAssigneeService ExpenseAssigneeService { get; }
+        IExpenseService ExpenseService { get; }
+        IExpenseSubtypeService ExpenseSubtypeService { get; }
+        ICollectionTypeService CollectionTypeService { get; }
     }
 }

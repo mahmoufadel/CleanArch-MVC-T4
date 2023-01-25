@@ -6,23 +6,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Entities
 {
-    [Table("country")]
+    [Table("country", Schema = "lookup")]
     public partial class Country
     {
         public Country()
         {
-            Addresses = new HashSet<Address>();
+            Expenses = new HashSet<Expense>();
         }
 
         [Key]
-        [Column("country_id")]
-        public int CountryId { get; set; }
-        [Column("country_name")]
+        [Column("id")]
+        public byte Id { get; set; }
+        [Column("arabic_name")]
         [StringLength(200)]
         [Unicode(false)]
-        public string? CountryName { get; set; }
+        public string ArabicName { get; set; } = null!;
+        [Column("english_name")]
+        [StringLength(200)]
+        [Unicode(false)]
+        public string? EnglishName { get; set; }
 
-        [InverseProperty(nameof(Address.Country))]
-        public virtual ICollection<Address> Addresses { get; set; }
+        [InverseProperty(nameof(Expense.CountryLkp))]
+        public virtual ICollection<Expense> Expenses { get; set; }
     }
 }

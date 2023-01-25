@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.OrderHistoryRepository.GetById(HistoryId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("OrderHistory", HistoryId.ToString() );
+                throw new EntityKeyNotFoundException("OrderHistory", HistoryId.ToString());
             }
             return (item, "OrderHistory record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.OrderHistoryRepository.GetById(entity.HistoryId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("OrderHistory", entity.HistoryId.ToString() );
+                    throw new EntityKeyFoundException("OrderHistory", entity.HistoryId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.OrderHistoryRepository.GetById(HistoryId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("OrderHistory", HistoryId.ToString() );
+                throw new EntityKeyNotFoundException("OrderHistory", HistoryId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateOrderHistory(int? HistoryId, OrderHistory entity, CancellationToken cancellationToken = default)
         {
-            if(!(HistoryId == entity.HistoryId))
+            if (!(HistoryId == entity.HistoryId))
             {
-                throw new BadKeyException("OrderHistory", entity.HistoryId.ToString() , HistoryId.ToString() );
+                throw new BadKeyException("OrderHistory", entity.HistoryId.ToString(), HistoryId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.OrderHistoryRepository.GetById(HistoryId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("OrderHistory", HistoryId.ToString() );
+                    throw new EntityKeyNotFoundException("OrderHistory", HistoryId.ToString());
                 }
                 else
                 {

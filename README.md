@@ -263,7 +263,7 @@ dotnet ef database update --project Persistence  --startup-project Startup
 dotnet ef database update --project Persistence  --startup-project WebAPI  
 
 **Database First Migrations**  
-scaffold-DbContext -Connection "Server=DESKTOP-GBANT4V; Database=BookStoresDB; Trusted_Connection=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -Project Persistence -StartupProject Startup -OutputDir ..\Domain\Entities  -Context ApplicationDbContext -ContextDir ..\Persistence\Context -Namespace Domain.Entities -ContextNamespace Persistence.Context  -DataAnnotations -Force
+scaffold-DbContext -Connection "Server=.; Database=RIS.FinancialInvestment; User Id=sa;Password=yourStrong(!)Password;" -Provider Microsoft.EntityFrameworkCore.SqlServer -Project Persistence -StartupProject Startup -OutputDir ..\Domain\Entities  -Context ApplicationDbContext -ContextDir ..\Persistence\Context -Namespace Domain.Entities -ContextNamespace Persistence.Context  -DataAnnotations -Force
 
 If possible do not use connection string directly in the above command.  
 

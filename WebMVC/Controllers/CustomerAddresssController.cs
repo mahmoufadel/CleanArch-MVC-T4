@@ -20,7 +20,7 @@ namespace WebMVC.Controllers
             _serviceManager = serviceManager;
             this.logger = logger;
         }
-        
+
         // GET: CustomerAddress
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -30,9 +30,9 @@ namespace WebMVC.Controllers
         }
 
         // GET CustomerAddress/Details/5
-        public async Task<IActionResult> Details(int? CustomerId,int? AddressId)
+        public async Task<IActionResult> Details(int? CustomerId, int? AddressId)
         {
-            var result = await _serviceManager.CustomerAddressService.GetCustomerAddressById(CustomerId,AddressId);
+            var result = await _serviceManager.CustomerAddressService.GetCustomerAddressById(CustomerId, AddressId);
             return View(result.entity);
         }
 
@@ -56,38 +56,38 @@ namespace WebMVC.Controllers
         }
 
         // Get CustomerAddress/Edit/5
-        public async Task<IActionResult> Edit(int? CustomerId,int? AddressId)
+        public async Task<IActionResult> Edit(int? CustomerId, int? AddressId)
         {
-            var result = await _serviceManager.CustomerAddressService.GetCustomerAddressById(CustomerId,AddressId);
+            var result = await _serviceManager.CustomerAddressService.GetCustomerAddressById(CustomerId, AddressId);
             return View(result.entity);
         }
 
         // POST CustomerAddress/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? CustomerId,int? AddressId, [Bind("CustomerId,AddressId,StatusId,Address,Customer")] CustomerAddress entity)
+        public async Task<IActionResult> Edit(int? CustomerId, int? AddressId, [Bind("CustomerId,AddressId,StatusId,Address,Customer")] CustomerAddress entity)
         {
             if (ModelState.IsValid)
             {
-                var result = await _serviceManager.CustomerAddressService.UpdateCustomerAddress(CustomerId,AddressId,entity);
+                var result = await _serviceManager.CustomerAddressService.UpdateCustomerAddress(CustomerId, AddressId, entity);
                 return RedirectToAction(nameof(Index));
             }
             return View(entity);
         }
 
         // Get CustomerAddress/Delete/5
-        public async Task<IActionResult> Delete(int? CustomerId,int? AddressId)
+        public async Task<IActionResult> Delete(int? CustomerId, int? AddressId)
         {
-            var result = await _serviceManager.CustomerAddressService.GetCustomerAddressById(CustomerId,AddressId);
+            var result = await _serviceManager.CustomerAddressService.GetCustomerAddressById(CustomerId, AddressId);
             return View(result.entity);
         }
 
         // POST <CustomerAddress/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? CustomerId,int? AddressId)
+        public async Task<IActionResult> DeleteConfirmed(int? CustomerId, int? AddressId)
         {
-            var result = await _serviceManager.CustomerAddressService.RemoveCustomerAddress(CustomerId,AddressId);
+            var result = await _serviceManager.CustomerAddressService.RemoveCustomerAddress(CustomerId, AddressId);
             return RedirectToAction(nameof(Index));
         }
     }

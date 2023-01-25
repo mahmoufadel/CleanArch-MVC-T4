@@ -20,7 +20,7 @@ namespace WebMVC.Controllers
             _serviceManager = serviceManager;
             this.logger = logger;
         }
-        
+
         // GET: Book
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -69,7 +69,7 @@ namespace WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _serviceManager.BookService.UpdateBook(BookId,entity);
+                var result = await _serviceManager.BookService.UpdateBook(BookId, entity);
                 return RedirectToAction(nameof(Index));
             }
             return View(entity);

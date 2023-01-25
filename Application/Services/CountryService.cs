@@ -30,12 +30,12 @@ namespace Application.Services
             return (items, "Country records retrieved");
         }
 
-        public async Task<(Country? entity, string Message)> GetCountryById(int? CountryId, CancellationToken cancellationToken = default)
+        public async Task<(Country? entity, string Message)> GetCountryById(int? Id, CancellationToken cancellationToken = default)
         {
-            var item = await _repositoryManager.CountryRepository.GetById(CountryId);
+            var item = await _repositoryManager.CountryRepository.GetById(Id);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Country", CountryId.ToString() );
+                throw new EntityKeyNotFoundException("Country", Id.ToString());
             }
             return (item, "Country record retrieved");
         }
@@ -44,10 +44,10 @@ namespace Application.Services
         {
             if (entity != null)
             {
-                var item = await _repositoryManager.CountryRepository.GetById(entity.CountryId);
+                var item = await _repositoryManager.CountryRepository.GetById(entity.Id);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("Country", entity.CountryId.ToString() );
+                    throw new EntityKeyFoundException("Country", entity.Id.ToString());
                 }
                 else
                 {
@@ -59,12 +59,12 @@ namespace Application.Services
             throw new Exception("Add Error");
         }
 
-        public async Task<string> RemoveCountry(int? CountryId, CancellationToken cancellationToken = default)
+        public async Task<string> RemoveCountry(int? Id, CancellationToken cancellationToken = default)
         {
-            var item = await _repositoryManager.CountryRepository.GetById(CountryId);
+            var item = await _repositoryManager.CountryRepository.GetById(Id);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Country", CountryId.ToString() );
+                throw new EntityKeyNotFoundException("Country", Id.ToString());
             }
             else
             {
@@ -74,25 +74,25 @@ namespace Application.Services
             }
         }
 
-        public async Task<string> UpdateCountry(int? CountryId, Country entity, CancellationToken cancellationToken = default)
+        public async Task<string> UpdateCountry(int? Id, Country entity, CancellationToken cancellationToken = default)
         {
-            if(!(CountryId == entity.CountryId))
+            if (!(Id == entity.Id))
             {
-                throw new BadKeyException("Country", entity.CountryId.ToString() , CountryId.ToString() );
+                throw new BadKeyException("Country", entity.Id.ToString(), Id.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
             {
-                var item = await _repositoryManager.CountryRepository.GetById(CountryId);
+                var item = await _repositoryManager.CountryRepository.GetById(Id);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("Country", CountryId.ToString() );
+                    throw new EntityKeyNotFoundException("Country", Id.ToString());
                 }
                 else
                 {

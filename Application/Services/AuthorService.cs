@@ -35,7 +35,7 @@ namespace Application.Services
             var item = await _repositoryManager.AuthorRepository.GetById(AuthorId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Author", AuthorId.ToString() );
+                throw new EntityKeyNotFoundException("Author", AuthorId.ToString());
             }
             return (item, "Author record retrieved");
         }
@@ -47,7 +47,7 @@ namespace Application.Services
                 var item = await _repositoryManager.AuthorRepository.GetById(entity.AuthorId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("Author", entity.AuthorId.ToString() );
+                    throw new EntityKeyFoundException("Author", entity.AuthorId.ToString());
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Application.Services
             var item = await _repositoryManager.AuthorRepository.GetById(AuthorId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Author", AuthorId.ToString() );
+                throw new EntityKeyNotFoundException("Author", AuthorId.ToString());
             }
             else
             {
@@ -76,15 +76,15 @@ namespace Application.Services
 
         public async Task<string> UpdateAuthor(int? AuthorId, Author entity, CancellationToken cancellationToken = default)
         {
-            if(!(AuthorId == entity.AuthorId))
+            if (!(AuthorId == entity.AuthorId))
             {
-                throw new BadKeyException("Author", entity.AuthorId.ToString() , AuthorId.ToString() );
+                throw new BadKeyException("Author", entity.AuthorId.ToString(), AuthorId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +92,7 @@ namespace Application.Services
                 var item = await _repositoryManager.AuthorRepository.GetById(AuthorId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("Author", AuthorId.ToString() );
+                    throw new EntityKeyNotFoundException("Author", AuthorId.ToString());
                 }
                 else
                 {

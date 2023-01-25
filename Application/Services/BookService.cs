@@ -26,8 +26,7 @@ namespace Application.Services
 
         public async Task<(IEnumerable<Book> entities, string Message)> GetAllBook(CancellationToken cancellationToken = default)
         {
-            var items = await _repositoryManager.BookRepository.GetAll();
-            return (items, "Book records retrieved");
+            var items = await _repositoryManager.BookRepository.GetAll(); return (items, "Book records retrieved");
         }
 
         public async Task<(Book? entity, string Message)> GetBookById(int? BookId, CancellationToken cancellationToken = default)
@@ -35,7 +34,7 @@ namespace Application.Services
             var item = await _repositoryManager.BookRepository.GetById(BookId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Book", BookId.ToString() );
+                throw new EntityKeyNotFoundException("Book", BookId.ToString());
             }
             return (item, "Book record retrieved");
         }
@@ -47,7 +46,7 @@ namespace Application.Services
                 var item = await _repositoryManager.BookRepository.GetById(entity.BookId);
                 if (item != null)
                 {
-                    throw new EntityKeyFoundException("Book", entity.BookId.ToString() );
+                    throw new EntityKeyFoundException("Book", entity.BookId.ToString());
                 }
                 else
                 {
@@ -64,7 +63,7 @@ namespace Application.Services
             var item = await _repositoryManager.BookRepository.GetById(BookId);
             if (item == null)
             {
-                throw new EntityKeyNotFoundException("Book", BookId.ToString() );
+                throw new EntityKeyNotFoundException("Book", BookId.ToString());
             }
             else
             {
@@ -76,15 +75,15 @@ namespace Application.Services
 
         public async Task<string> UpdateBook(int? BookId, Book entity, CancellationToken cancellationToken = default)
         {
-            if(!(BookId == entity.BookId))
+            if (!(BookId == entity.BookId))
             {
-                throw new BadKeyException("Book", entity.BookId.ToString() , BookId.ToString() );
+                throw new BadKeyException("Book", entity.BookId.ToString(), BookId.ToString());
             }
 
             _repositoryManager.UnitOfWork.GetContext().Entry(entity).State = EntityState.Modified;
 
             try
-            { 
+            {
                 _repositoryManager.UnitOfWork.CompleteAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
@@ -92,7 +91,7 @@ namespace Application.Services
                 var item = await _repositoryManager.BookRepository.GetById(BookId);
                 if (item == null)
                 {
-                    throw new EntityKeyNotFoundException("Book", BookId.ToString() );
+                    throw new EntityKeyNotFoundException("Book", BookId.ToString());
                 }
                 else
                 {
@@ -100,6 +99,12 @@ namespace Application.Services
                 }
             }
             return "Book record updated";
+
+
+
+
+
+
         }
     }
 }
